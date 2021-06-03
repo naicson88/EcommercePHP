@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Compra certa </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <!-- Favicon -->
+        <link href="../img/favicon_io/favicon-16x16.png" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="../css/style.css" rel="stylesheet">
+        <style>
+            #lista div {
+                display: inline-block;
+                margin: 5px;
+               
+            }
+
+            #lista div img{
+               max-height: 350px;
+            
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <!-- Início Top-bar -->
+        <div class="top-bar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:compracerta@gmail.com.br">compracerta@gmail.com</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fa fa-phone-alt"></i>
+                        (71) 9 9999-9999
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Top-bar -->
+        
+        <!-- Início Nav-Bar -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="#" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto">
+                            <a href="../index.html" class="nav-item nav-link active">Home</a>
+                
+                            <a href="../cart.html" class="nav-item nav-link">Carrinho</a>
+                            <a href="../registro.html" class="nav-item nav-link">Registrar</a>
+                         
+                       
+                        </div>
+                        <div class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Usuário</a>
+                                <div class="dropdown-menu">
+                                    <a href="../login.html" class="dropdown-item">Login</a>
+                                    <a href="../registro.html" class="dropdown-item">Registrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Fim Nav-Bar -->      
+        
+        <!-- Início Bottom-Bar -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="../index.html">
+                                <img src="../img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <input type="text" placeholder="Procurar por produto">
+                            <button><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+
+                            <a href="../cart.html" class="btn cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span> R$ <span id="cartPrice"> </span>  </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim Bottom-Bar -->       
+        
+        <!-- Início Main-Slider -->
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <nav class="navbar bg-light">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../index.html"><i class="fa fa-home"></i>Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="maisVendidos.html"><i class="fas fa-heart"></i>Mais Vendidos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="novidade.html"><i class="fa fa-plus-square"></i>Novidades</a>
+                                </li>
+            
+                                <li class="nav-item">
+                                    <a class="nav-link" href="frutasVerduras.html"><i class="fas fa-apple-alt"></i>Frutas e Verduras</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="limpeza.html"><i class="fas fa-trash"></i>Limpeza</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="frios.html"><i class="fas fa-pizza-slice"></i>Frios e Lanches</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="bebidas.html"><i class="fas fa-wine-bottle"></i>Bebidas</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div  class="col-md-9" id="lista" style="margin-bottom: 120px;"> 
+                        <p style="text-align: center; border:solid thin silver;margin-bottom: 10px; font-size: 50px; color: white;
+                        background-image: linear-gradient(to right, #f0e7db, #f0d1b6, #f3b997, #f79e80, #fa8072);">                
+                      Frios e Lanches
+                    </p>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../img/frutasVerduras/mamao.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"> <a href="detalhe-produto.html">Nome</a>  </h5>
+                         
+                          <p class="card-text preco">R$  <span class="valor">75.99</span>  </p>
+                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="../img/limpeza/alcool.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"> <a href="detalhe-produto.html">Nome</a> </h5>
+                         
+                          <p class="card-text preco">R$ <span class="valor">100.50</span> </p>
+                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="../img/maisVendidos/bomar.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"><a href="detalhe-produto.html">Nome</a> </h5>
+                         
+                          <p class="card-text preco">R$ <span class="valor">30.19</span></p>
+                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img src="../img/frutasVerduras/aipim.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Nome</h5>
+                         
+                          <p class="card-text preco">R$ <span class="valor">42.00</span> </p>
+                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Main-Slider -->        
+        
+        <!-- Início Feature -->
+        <div class="feature">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <h2>Pagamento Seguro</h2>
+                            <p>
+                               Pagamento seguro via cartão de crédito
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-truck"></i>
+                            <h2>Entrega Expressa</h2>
+                            <p>
+                               Receba sua compra no conforto da sua casa
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-sync-alt"></i>
+                            <h2>90 dias para devolver</h2>
+                            <p>
+                                Caso insatisfeito, você tem até 90 dias para devolver
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-comments"></i>
+                            <h2>Suporter 24h</h2>
+                            <p>
+                               Conte com nosso atendimento 24h por dia!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Feature -->  
+        
+        <!-- Início Newsletter -->
+        <div class="newsletter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Se inscreva para receber as novidades</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form">
+                            <input type="email" value="Exemplo: compracerta@gmail.com">
+                            <button>Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIm Newsletter -->             
+        
+        <!-- Início Footer -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Entre em contato</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i><a href="https://www.google.com.br/maps/@-17.6713916,-39.2599974,16.25z" target="_blank">123 E Store, Salvador-BA</a></p>
+                                <p><i class="fa fa-envelope"></i><a href="mailto:compracerta@gmail.com.br">compracerta@gmail.com</a>p>
+                                <p><i class="fa fa-phone"></i>(71) 9 9999-9999</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Siga-nos</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Informações</h2>
+                            <ul>
+                                <li><a href="../info/sobrenos.html">Sobre Nós</a></li>
+                                <li><a href="../info/politicaPrivacidade.html">Política de Privacidade</a></li>
+                                <li><a href="../info/termosCondicoes.html">Termos e Condições</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Informação de Compra</h2>
+                            <ul>
+                                <li><a href="../info/politicaPagamento.html">Política de Pagamento</a></li>
+                                <li><a href="../info/politicaEnvio.html">Política de envio</a></li>
+                                <li><a href="../info/politicaDevolucao.html">Política de devolução</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>Formas pagamento:</h2>
+                            <img src="../img/payment-method.png" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Assegurado por:</h2>
+                            <img src="../img/godaddy.svg" alt="Payment Security" />
+                            <img src="../img/norton.svg" alt="Payment Security" />
+                            <img src="../img/ssl.svg" alt="Payment Security" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Footer -->    
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/slick/slick.min.js"></script>
+        
+        <!--  Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
