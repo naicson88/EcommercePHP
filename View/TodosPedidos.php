@@ -1,5 +1,5 @@
 <?php 
-    require "../Model/Pedido.php";
+    //require "../Model/Pedido.php";
     require "../Model/PedidoService.php";
     require "../Model/Usuario.php";
     
@@ -16,6 +16,9 @@
         } 
         else if($_SESSION['NomeUsuario']->getNomeUsuario() == 'Entrega'){
             $pedidos = $pedidoService->consultarTodosOsPedidosEntrega(); 
+        }
+        else if($_SESSION['NomeUsuario']->getNomeUsuario() == 'Administrador'){
+            $pedidos = $pedidoService->consultarTodosOsPedidos(); 
         }
        
     }

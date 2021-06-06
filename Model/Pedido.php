@@ -7,6 +7,7 @@
         private $status;
         private $data;
         private $rastreio;
+        private $comentarioCliente;
 
         public function getId(){
             return $this->id;
@@ -39,6 +40,14 @@
     
         public function setStatus($status){
             $this->status = $status;
+        }
+
+        public function getComentario(){
+            return $this->comentarioCliente;
+        }
+    
+        public function setComentario($comentarioCliente){
+            $this->comentarioCliente = $comentarioCliente;
         }
     
         public function getCliente(){

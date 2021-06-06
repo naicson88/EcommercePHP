@@ -11,7 +11,10 @@
                 <div class="row">
                   
                     <div class="col-lg-6">
-                        <form class="login-form" method="POST" action="../index.php?Acao=FazerLogin">
+                        <form class="login-form" method="POST" action="../index.php?Acao=FazerLogin" style="border: solid thin silver;">
+                        <div>
+                            <h1>Login</h1>
+                        </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>E-mail</label>
@@ -44,7 +47,7 @@
         <!-- Login End -->
         
         <!-- Footer Start -->
-        <div class="footer">
+        <div class="footer" style="">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">

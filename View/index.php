@@ -1,5 +1,5 @@
 <?php 
-      require "../Model/Produto.php";
+      //require "../Model/Produto.php";
       require "../Model/ProdutoService.php";
       require "../Model/Usuario.php";
       require "../Model/ItensPedido.php";
@@ -16,18 +16,6 @@
     <?php 
         include("header.php");
 
-      /*  if(isset($_GET['adicionar'])){
-           
-            if(isset($_SESSION['Carrinho'])){
-                echo $_SESSION['Carrinho'] ;
-               $valor = $_GET['valor'];
-               echo $valor;
-               $_SESSION['Carrinho'] +=  $valor;
-                echo $_SESSION['Carrinho'] ;
-            }
-        }*/
-           
-         
     ?>
 
         <!-- Bottom Bar End -->       
@@ -40,7 +28,7 @@
                                 <nav class="navbar bg-light">
                                     <ul class="navbar-nav">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="index.html"><i class="fa fa-home"></i>Home</a>
+                                            <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="navbar_category/maisVendidos.html"><i class="fa fa-shopping-bag"></i>Mais Vendidos</a>
@@ -50,7 +38,7 @@
                                         </li>
                     
                                         <li class="nav-item">
-                                            <a class="nav-link" href="navbar_category/frutasVerduras.html"><i class="fas fa-apple-alt"></i>Frutas e Verduras</a>
+                                            <a class="nav-link" href="lado_frutasVerduras.php"><i class="fas fa-apple-alt"></i>Frutas e Verduras</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="navbar_category/limpeza.html"><i class="fas fa-trash"></i>Limpeza</a>
@@ -81,11 +69,11 @@
                                 <div class="col-md-3" style="height: 25% !important;">
                                     <div class="product-item">
                                         <div class="product-title">
-                                            <a href="detalhe-produto.html"><?php echo  $listaProdutos[$i]->getName(); ?> </a>
+                                            <a href="detalhe-produto.php?id=<?php echo $listaProdutos[$i]->getId();?>"><?php echo  $listaProdutos[$i]->getName(); ?> </a>
                                         
                                         </div>
                                         <div class="product-image">
-                                            <a href="product-detail.html">
+                                            <a href="detalhe-produto.php?id=<?php echo $listaProdutos[$i]->getId();?>">
                                                 <img src="<?php echo  $listaProdutos[$i]->getImagem(); ?>" alt="Product Image">
                                             </a>
                                         </div>
@@ -165,7 +153,8 @@
                                         </div>
                                         <div class="product-price">
                                             <h3><span>R$ </span><?php echo  $listaProdutos[$i]->getvl_produto(); ?></h3>
-                                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i></a>
+                                            <a class="btn" href="?adicionar&valor=<?php echo $listaProdutos[$i]->getvl_produto();?>&qtd=1&id=<?php echo $listaProdutos[$i]->getId();?>&nome=<?php echo $listaProdutos[$i]->getName();?>&imagem=<?php echo $listaProdutos[$i]->getImagem();?>" >
+                                            <i class="fa fa-shopping-cart"></i></a>
                                         </div>
                                     </div>
                                 </div>

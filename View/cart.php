@@ -4,6 +4,8 @@
 require "../Model/ProdutoService.php";
 require "../Model/Usuario.php";
 require "../Model/ItemPedidoDAO.php";
+require "../Model/ItensPedido.php";
+//require "../Model/Produto.php";
 
 ?>
 <!DOCTYPE html>

@@ -1,6 +1,7 @@
 <?php 
-    include "Conexao.php";
-
+   include_once "Conexao.php";
+   // include "Produto.php";
+   include_once("ItensPedido.php");
     class PedidoDAO {
         
          
@@ -192,8 +193,12 @@
                 case "EM SEPARAÇÃO" : $newStatus = "SETOR ENTREGA";
                 break;
 
-                case "SETOR ENTREGA" : $newStatus = "ENVIADO";
+                case "SETOR ENTREGA" : $newStatus = "ENVIADO";    
                 break;
+
+                case "ENVIADO" : $newStatus = "ENTREGUE";    
+                break;
+
             }
             
             if($newStatus == "ENVIADO") {
@@ -246,6 +251,68 @@
             }
         }
 
+        public function avaliacaoPedido($id_pedido, $nota, $texto){
+            $conn = new Conexao();
+            $pdo =  $conn -> conectar();
+         
+
+            try{
+                $update = $pdo->prepare("update tab_pedido set avaliacao_cliente = :aval, comentario_cliente = :texto where id = :id_pedido");
+             
+                $update->bindValue("id_pedido", intval($id_pedido));
+                $update->bindValue("aval", $nota);
+                $update->bindValue("texto", $texto);
+
+               // $insert->bindValue("data", "CURDATE()");
+                
+                $update -> execute();
+                echo "Atualizado com sucesso! <br>";
+
+                $conn->fechaConexao($conn);
+
+             
+            } catch(PDOException $e) {
+                echo "Erro na conexão" .$e->getMessage();
+            }
+        }
+
+        public function consultarTodosOsPedidos(){
+            $conn = new Conexao();
+            $pdo =  $conn -> conectar();
+            
+            $consulta = $pdo->prepare("SELECT * FROM TAB_PEDIDO");
+            
+            $consulta ->execute();
+
+            $result = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $todosPedidos = array();
+
+            $i = 0;
+
+            while($linha = $consulta->fetch(PDO::FETCH_ASSOC)){
+
+              $pedidoEncontrado = new Pedido();
+              $iped = new ItemPedidoDAO(); 
+              $itens = $iped->getItensDoPedido($linha['id']);
+             
+                
+               $pedidoEncontrado->setId($linha['id']);
+               $pedidoEncontrado->setCliente($linha['cliente']);
+               $pedidoEncontrado->setAvaliacaoCliente($linha['avaliacao_cliente']);
+               $pedidoEncontrado->setStatus($linha['status']);
+               $pedidoEncontrado->setData($linha['data']);
+               $pedidoEncontrado->setItensPedido($itens);
+
+               $todosPedidos[$i] = $pedidoEncontrado;
+                $i++;
+            }
+
+            return $todosPedidos;
+
+            $conn->fechaConexao($conn);
+        }
+  
     }
 
 ?>

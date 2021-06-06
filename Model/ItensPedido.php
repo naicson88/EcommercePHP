@@ -1,5 +1,6 @@
 <?php 
-
+    include "Produto.php";
+    
     class ItensPedido extends Produto{
         private $id;
         private $cdItem;

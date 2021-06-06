@@ -1,103 +1,31 @@
+<?php 
+      require "../Model/Produto.php";
+      require "../Model/ProdutoService.php";
+      require "../Model/Usuario.php";
+      require "../Model/ItensPedido.php";
+      
+    session_start();
+    if (isset($_GET['id'])) {
+        $id_produto = intval($_GET['id']);
+        $service = new ProdutoService();
+        
+      $produto =   $service->listarProdutoEspecifico($id_produto);
+
+      $aval = $service->consultaAvaliacao($id_produto);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>UNIBOOK - eCommerce </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <?php   
+        include("header.php");
+    ?>
 
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
-
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/slick/slick.css" rel="stylesheet">
-        <link href="lib/slick/slick-theme.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-
-    <body>
-        <!-- Top bar Start -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <i class="fa fa-envelope"></i>
-                        support@email.com
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="fa fa-phone-alt"></i>
-                        (71) 71-99999-9999
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Top bar End -->
-        
-        <!-- Nav Bar Start -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link ">Home</a>
-                        
-                            <a href="cart.html" class="nav-item nav-link">Carrinho</a>
-                            <a href="registro.html" class="nav-item nav-link">Registro</a>
-                         
-                        </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Usuário</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.html" class="dropdown-item">Login</a>
-                                    <a href="registro.html" class="dropdown-item">Registro</a>
-                                    <a href="pedidos.html" class="dropdown-item">Seus pedidos</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
         <!-- Nav Bar End -->      
         
         <!-- Bottom Bar Start -->
-        <div class="bottom-bar">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <div class="logo">
-                            <a href="index.html">
-                                <img src="img/logo.png" alt="Logo">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                     
-                    </div>
-                    <div class="col-md-3">
-                        <div class="user">
-                            <a href="cart.html" class="btn cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
         <!-- Bottom Bar End --> 
         
         <!-- Breadcrumb Start -->
@@ -121,17 +49,17 @@
                             <div class="row align-items-center">
                                 <div class="col-md-5">
                                     <div class="product-slider-single normal-slider">
-                                        <img src="img/frutasVerduras/abacaxii.PNG" alt="Product Image">
+                                    <img src="<?php echo  $produto->getImagem(); ?>" alt="Product Image">
                                     </div>
                                     
                                 </div>
                                 <div class="col-md-7">
                                     <div class="product-content">
-                                        <div class="title"><h2>Abacaxi Rodela Kg</h2></div>
+                                        <div class="title"><h2><?php echo $produto->getName(); ?></h2></div>
                                  
                                         <div class="price">
                                             <h4>Preço:</h4>
-                                            <p>R$ 99,00 <span>R$ 149,00</span></p>
+                                            <p>R$ <?php echo $produto->getvl_produto() ?></p>
                                         </div>
                                         <div class="quantity">
                                             <h4>Quantidade:</h4><br>
@@ -154,7 +82,7 @@
                                 <ul class="nav nav-pills nav-justified">
                                    
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
+                                        <a class="nav-link" data-toggle="pill" href="#reviews">Reviews </a>
                                     </li>
                                 </ul>
 
@@ -162,29 +90,35 @@
                                
                                     <div id="reviews" class="container tab-pane fade">
                                         <div class="reviews-submitted">
-                                            <div class="reviewer">Alan Naicson - <span>01 Jan 2020</span></div>
+                                        <?php for($i=0; $i < count($aval); $i++){ ?>
+                                            <div class="reviewer"><?php echo $aval[$i]->getNome();?> - <span><?php echo (new DateTime($aval[$i]->getdata()))->format('d/m/Y '); ?></span></div>
                                        
                                             <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                                                <?php echo $aval[$i]->getTexto(); ?>
                                             </p>
                                         </div>
+                                        <?php } ?>
                                         <div class="reviews-submit">
+                                        <form  method="POST" action="../index.php?Acao=AvaliacaoProduto">
                                             <h4>Deixe sua opinião:</h4>
-                                        
+                                            
                                             <div class="row form">
                                                 <div class="col-sm-6">
-                                                    <input type="text" placeholder="Nome">
+                                                    <input type="text" placeholder="Nome" name="nome">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <input type="email" placeholder="Email">
+                                                    <input type="email" placeholder="Email" name="email">
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <textarea placeholder="Review"></textarea>
+                                                    <textarea placeholder="Review" name="texto"></textarea>
                                                 </div>
+                                                <input type="hidden" name="id_produto" value="<?php echo $produto->getId();?>">
                                                 <div class="col-sm-12">
-                                                    <button>Enviar</button>
+                                                    <button type="submit">Enviar</button>
                                                 </div>
                                             </div>
+                                        </form>
+                                   
                                         </div>
                                     </div>
                                 </div>

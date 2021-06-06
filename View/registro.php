@@ -8,84 +8,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>UNIBOOK - eCommerce </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
- 
-
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
-
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/slick/slick.css" rel="stylesheet">
-        <link href="lib/slick/slick-theme.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-
-    <body>
-        <!-- Top bar Start -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <i class="fa fa-envelope"></i>
-                        support@email.com
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="fa fa-phone-alt"></i>
-                        +(71)99999-9999
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Top bar End -->
-        
-        <!-- Nav Bar Start -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link ">Home</a>
-                 
-                            <a href="cart.html" class="nav-item nav-link">Carrinho</a>
-                            <a href="registro.html" class="nav-item nav-link">Registro</a>
-                  
-                        </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Usuário</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.html" class="dropdown-item">Login</a>
-                                    <a href="registro.html" class="dropdown-item">Registrar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+<?php 
+        include("header.php");
+           
+         
+    ?>
         <!-- Nav Bar End -->      
         
         <!-- Login Start -->
         <div class="login">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">    
-                        <form class="register-form" method="POST" name="Registro" action="../index.php?Acao=CadastrarUsuario">
+                    <div class="col-lg-8" >    
+                        <form class="register-form" method="POST" name="Registro" action="../index.php?Acao=CadastrarUsuario" style="border: solid thin silver;">
+                        <div>
+                            <h1>Registro</h1>
+                        </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Nome</label>
@@ -121,7 +59,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" required name="password" type="password"> 
+                                    <input class="form-control" type="password" required name="password" type="password"> 
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn" type="submit">Enviar</button>

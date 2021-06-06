@@ -1,121 +1,22 @@
+<?php 
+    //require "../Model/Produto.php";
+      require "../Model/ProdutoService.php";
+      require "../Model/Usuario.php";
+      require "../Model/ItensPedido.php";
+    session_start();
+    $produto = new Produto();
+    $produtoService = new ProdutoService();
+
+    $listaProdutos = $produtoService->listarTodosProdutos();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <title>Compra certa </title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<?php 
+        include("header.php");
 
-        <!-- Favicon -->
-        <link href="../img/favicon_io/favicon-16x16.png" rel="icon">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
-
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/slick/slick.css" rel="stylesheet">
-        <link href="lib/slick/slick-theme.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
-        <link href="../css/style.css" rel="stylesheet">
-        <style>
-            #lista div {
-                display: inline-block;
-                margin: 5px;
-               
-            }
-
-            #lista div img{
-               max-height: 350px;
-            
-            }
-
-            
-        </style>
-    </head>
-
-    <body>
-        <!-- Início Top-bar -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <i class="fa fa-envelope"></i>
-                        <a href="mailto:compracerta@gmail.com.br">compracerta@gmail.com</a>
-                    </div>
-                    <div class="col-sm-6">
-                        <i class="fa fa-phone-alt"></i>
-                        (71) 9 9999-9999
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fim Top-bar -->
-        
-        <!-- Início Nav-Bar -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="../index.html" class="nav-item nav-link active">Home</a>
-                
-                            <a href="../cart.html" class="nav-item nav-link">Carrinho</a>
-                            <a href="../registro.html" class="nav-item nav-link">Registrar</a>
-                         
-                       
-                        </div>
-                        <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Usuário</a>
-                                <div class="dropdown-menu">
-                                    <a href="../login.html" class="dropdown-item">Login</a>
-                                    <a href="../registro.html" class="dropdown-item">Registrar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- Fim Nav-Bar -->      
-        
-        <!-- Início Bottom-Bar -->
-        <div class="bottom-bar">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <div class="logo">
-                            <a href="../index.html">
-                                <img src="../img/logo.png" alt="Logo">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" placeholder="Procurar por produto">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="user">
-
-                            <a href="../cart.html" class="btn cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span> R$ <span id="cartPrice"> </span>  </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    ?>
         <!-- Fim Bottom-Bar -->       
         
         <!-- Início Main-Slider -->
@@ -126,26 +27,26 @@
                         <nav class="navbar bg-light">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../index.html"><i class="fa fa-home"></i>Home</a>
+                                    <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="maisVendidos.html"><i class="fas fa-heart"></i>Mais Vendidos</a>
+                                    <a class="nav-link" href="maisVendidos.php"><i class="fas fa-heart"></i>Mais Vendidos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="novidade.html"><i class="fa fa-plus-square"></i>Novidades</a>
+                                    <a class="nav-link" href="novidade.php"><i class="fa fa-plus-square"></i>Novidades</a>
                                 </li>
             
                                 <li class="nav-item">
-                                    <a class="nav-link" href="frutasVerduras.html"><i class="fas fa-apple-alt"></i>Frutas e Verduras</a>
+                                    <a class="nav-link" href="frutasVerduras.php"><i class="fas fa-apple-alt"></i>Frutas e Verduras</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="limpeza.html"><i class="fas fa-trash"></i>Limpeza</a>
+                                    <a class="nav-link" href="limpeza.php"><i class="fas fa-trash"></i>Limpeza</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="frios.html"><i class="fas fa-pizza-slice"></i>Frios e Lanches</a>
+                                    <a class="nav-link" href="frios.php"><i class="fas fa-pizza-slice"></i>Frios e Lanches</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="bebidas.html"><i class="fas fa-wine-bottle"></i>Bebidas</a>
+                                    <a class="nav-link" href="bebidas.php"><i class="fas fa-wine-bottle"></i>Bebidas</a>
                                 </li>
                             </ul>
                         </nav>
@@ -153,47 +54,41 @@
                     <div  class="col-md-9" id="lista" style="margin-bottom: 120px;"> 
                         <p style="text-align: center; border:solid thin silver;margin-bottom: 10px; font-size: 50px; color: white;
                         background-image: linear-gradient(to right, #f0e7db, #f0d1b6, #f3b997, #f79e80, #fa8072);">                
-                      Fruta e Verduras
+                      Frutas e Verduras
                     </p>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../img/frutasVerduras/mamao.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"> <a href="detalhe-produto.html">Nome</a>  </h5>
-                         
-                          <p class="card-text preco">R$  <span class="valor">75.99</span>  </p>
-                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
-                        </div>
-                      </div>
 
-                      <div class="card" style="width: 18rem;">
-                        <img src="../img/frutasVerduras/abacaxi.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"> <a href="detalhe-produto.html">Nome</a> </h5>
-                         
-                          <p class="card-text preco">R$ <span class="valor">100.50</span> </p>
-                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
-                        </div>
-                      </div>
+                    <div class="con" style="margin-left: -20px;">
 
-                      <div class="card" style="width: 18rem;">
-                        <img src="../img/frutasVerduras/alface.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"><a href="detalhe-produto.html">Nome</a> </h5>
-                         
-                          <p class="card-text preco">R$ <span class="valor">30.19</span></p>
-                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
-                        </div>
-                      </div>
+                        <?php for($i=0; $i < count($listaProdutos); $i++){
+                            if($listaProdutos[$i]->getCategoria() == 'FRUTAS E VERDURAS') : ?>
 
-                      <div class="card" style="width: 18rem;">
-                        <img src="../img/frutasVerduras/aipim.PNG" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Nome</h5>
-                         
-                          <p class="card-text preco">R$ <span class="valor">42.00</span> </p>
-                          <button  class="btn btn-primary btnCarrinho"><i class="fas fa-cart-plus"></i> Comprar</button>
-                        </div>
-                      </div>
+                                <div class="col-md-3" style="margin-left: -10px;">
+                                    <div class="product-item">
+                                        <div class="product-title" style="width: 100%;">
+                                            <a href="detalhe-produto.php?id=<?php echo $listaProdutos[$i]->getId();?>"><?php echo  $listaProdutos[$i]->getName(); ?> </a>
+                                        
+                                        </div>
+                                        <div class="product-image">
+                                            <a href="detalhe-produto.php?id=<?php echo $listaProdutos[$i]->getId();?>">
+                                                <img src="<?php echo  $listaProdutos[$i]->getImagem(); ?>" alt="Product Image">
+                                            </a>
+                                        </div>
+                                        <div class="product-price" style="width: 100%; ">
+                                            <h5><span>R$ </span><?php echo  $listaProdutos[$i]->getvl_produto(); ?>
+                                            <a class="btn" href="?adicionar&valor=<?php echo $listaProdutos[$i]->getvl_produto();?>&qtd=1&id=<?php echo $listaProdutos[$i]->getId();?>&nome=<?php echo $listaProdutos[$i]->getName();?>&imagem=<?php echo $listaProdutos[$i]->getImagem();?>" >
+                                        
+                                            <i class="fas fa-shopping-cart"></i></a></h5>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php endif; ?>
+                        <?php }?>
+
+                    </div>
+
+
                     </div>
                 </div>
             </div>

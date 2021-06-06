@@ -1,12 +1,14 @@
 <?php
 
-       
+       $logado = false;
 
         if(isset( $_SESSION['UsuarioLogado'])){
             $userName =  $_SESSION['NomeUsuario']->getNomeUsuario() . " " . $_SESSION['NomeUsuario']->getSobrenome();
             $role =  $_SESSION['NomeUsuario']->getRole();
+            $logado= true;
         } else {
             $userName =  "Fazer Login";
+            $logado = false;
         }
 
         if(isset($_GET['adicionar'])){
@@ -136,8 +138,10 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                 
                             <a href="cart.php" class="nav-item nav-link">Carrinho</a>
+                            <?php if(!$logado) :?>
+
                             <a href="registro.php" class="nav-item nav-link">Registrar</a>
-                         
+                         <?php endif; ?>
                        
                         </div>
                         <div class="navbar-nav ml-auto">
@@ -157,7 +161,7 @@
                                         <a href="registro.php" class="dropdown-item">Registrar-se</a>
                                     <?php endif; ?>
                                     
-                                    <?php if($userName != 'Fazer Login' && $role = "USUARIO"): ?>
+                                    <?php if($userName != 'Fazer Login' && $role == "USUARIO"): ?>
                                         <a href="pedidos.php" class="dropdown-item">Meus pedidos</a>
                                     <?php endif; ?>
    

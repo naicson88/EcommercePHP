@@ -3,8 +3,10 @@
 
 require "../Model/ProdutoService.php";
 require "../Model/Usuario.php";
+//require "../Model/ItemPedidoDAO.php";
+require "../Model/ItensPedido.php";
+require "../Model/PedidoService.php";
 
-require "../Model/ItemPedidoDAO.php";
 
 session_start();
 $status = $_GET['status'];
@@ -29,6 +31,10 @@ if(isset($_GET['pedido'])){
     $itens = $dao->getItensDoPedido($idPedido);
 
     $_SESSION['carrinhoArray'] = $itens;
+
+
+    $aval = $dao->consultarAvalicao($id_pedido);
+
 
 }
 
@@ -109,9 +115,30 @@ if(isset($_GET['pedido'])){
 
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
-                    </div>
+                        
+                       
+                        <div class="reviews-submitted" 
+                        style="border: solid thin silver; padding:10px;background-color: white; border-radius: 10px; margin-bottom: 10px;">
+                                      <h2 style="color:indianred;">Avaliação cliente</h2>
+                                      <?php if($aval->getComentario() != null) :?>
+                                            <div class="reviewer">Avaliação: <b>  <span><?php echo $aval->getAvaliacaoCliente()?></span></b></div>
+                                            <br>
+                                            <p>
+                                             Comentário: <?php echo $aval->getComentario() ?>
+                                            </p>
+                                        </div>
+                                        <?php elseif($aval->getComentario() == null) :?>
+                                        
+                                            <p>
+                                             <i>Nenhuma avaliação feita</i>
+                                            </p>
+                                        </div>
+                                        <?php endif; ?>
+                     </div>
+                            
                     <div class="col-lg-4">
                         <div class="cart-page-inner">
                             <div class="row">
@@ -140,7 +167,13 @@ if(isset($_GET['pedido'])){
                                                 <button type="button" class="btn btn-primary" disabled>
                                                 Pago</button> <?php endif; ?>
 
+                                                <?php if($status == "ENTREGUE" && $aval->getComentario() == null ) : ?>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aval">
+                                                Avaliar Compra</button>
+                                                <?php endif; ?>
+                                            
                                         </div>
+                                        
                                         <!-- Modal Pagamento-->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" 
                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -210,14 +243,64 @@ if(isset($_GET['pedido'])){
                                             </div>
                                             </div>
                                         </div>
+                                        <!-- avaliar compra-->
+                                        <div class="modal fade" id="aval" tabindex="-1" 
+                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Avaliar Compra</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form style="background-color: ghostwhite; padding: 20px; border-radius: 10px;" method="POST" action="../index.php?Acao=AvaliacaoPedido">
+                                                        <div class="form-row">
+                                                          <div class="col-sm-8">
+                                                            <label >Escolha uma nota</label>
+                                                           <select name="nota" id="nota">
+                                                                <option value="Pessimo">Pessimo</option>
+                                                                <option value="Ruim">Ruim</option>
+                                                                <option value="Regular">Regular</option>
+                                                                <option value="Bom">Bom</option>
+                                                                <option value="Excelente">Excelente</option>
+                                                           </select>
+                                                          </div>
+                                                        </div>
+                                                        <label >Descreva sua opinião:</label>
+                                                          <div class="form-row">
+                                                                <textarea name="texto" id="texto" cols="50" rows="6" required name="texto"></textarea>
+                                                          </div>
+                                                          <input type="hidden" name="id_pedido" value="<?php echo  $id_pedido; ?>">
+                                                          <input type="hidden" name="status" value="<?php echo $status;?>">
+                                                          <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                                                        <button  type="submit" class="btn btn-primary"  style="background-color:royalblue;color: white;">  
+                                                        Enviar
+                                                  
+                                                </button>
+                                                </div>
+                                                      </form>
+                                                </div>
+                                           
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                           
                             </div>
+                            
                         </div>
+                        
                     </div>
+                    
                 </div>
             </div>
+
         </div>
+     
         <!-- Fim Cart -->
         
         <div class="footer">

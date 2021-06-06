@@ -1,7 +1,8 @@
 <?php
     
-    include "Produto.php";
-    include "ItensPedido.php";
+    //include "Produto.php";
+    //include "ItensPedido.php";
+    include "Pedido.php";
     class ItemPedidoDAO {
         function insertItemPedido($id_pedido,  $produto){ 
 
@@ -83,8 +84,39 @@
                   return $todosPedidos;
                 
             }
+
+              
+         function consultarAvalicao($id_pedido){
+            $conn = new Conexao();
+            $pdo =  $conn -> conectar();
+            
+            $consulta = $pdo->prepare("SELECT * FROM TAB_PEDIDO WHERE id = :id");
+            $consulta->bindValue("id", $id_pedido);
+            $consulta ->execute();
+
+            $result = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $todosPedidos = array();
+
+            $i = 0;
+            $pedidoEncontrado = new Pedido();
+            while($linha = $consulta->fetch(PDO::FETCH_ASSOC)){
+
+            
+                    
+               $pedidoEncontrado->setAvaliacaoCliente($linha['avaliacao_cliente']);
+               $pedidoEncontrado->setComentario($linha['comentario_cliente']);
+
+                $i++;
+            }
+
+            return $pedidoEncontrado;
+
+            $conn->fechaConexao($conn);
+        }
         }
 
+      
 
 
 ?>

@@ -1,6 +1,7 @@
 <?php 
     require "PedidoDAO.php";
     require "ItemPedidoDAO.php";
+
     
     class PedidoService {
 
@@ -57,7 +58,19 @@
             $pedidosDao->realizarPagamento($id_pedido);
         }
 
+        public function avaliacaoPedido($id_pedido, $nota, $texto){
+
+        $pedidosDao = new PedidoDAO();
+        $pedidosDao->avaliacaoPedido($id_pedido, $nota, $texto);
         }
 
+        public function consultarTodosOsPedidos(){
+            $pedidosDao = new PedidoDAO();
+             $pedidos = $pedidosDao->consultarTodosOsPedidos();
+
+             return $pedidos;
+        }
+
+    }
     
 ?>

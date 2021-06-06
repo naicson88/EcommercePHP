@@ -110,6 +110,34 @@
 					header('location:View/TodosPedidos.php');
 
 					break;
+				case "AVALIACAOPRODUTO":
+					require "Controller/ProdutoController.php";
+					session_start();
+					$nome = $_POST['nome'];
+					$email = $_POST['email'];
+					$texto = $_POST['texto'];
+					$id_produto = $_POST['id_produto'];
+					var_dump($nome);
+					$controller = new ProdutoController();
+					$controller->avaliacaoProduto($nome,$email,$texto,$id_produto);
+					header("location:View/detalhe-produto.php?id=$id_produto");
+					break;
+
+				case "AVALIACAOPEDIDO":
+					require "Controller/PedidoController.php";
+					session_start();
+					$nota = $_POST['nota'];
+					$texto = $_POST['texto'];
+					$id_pedido = $_POST['id_pedido'];
+					$status = $_POST['status'];
+
+					$controller = new PedidoController();
+					$controller->avaliacaoPedido($id_pedido, $nota, $texto);
+
+					header("location:View/PedidoRealizado.php?pedido=$id_pedido&status=$status");
+
+					break;
+
 			/*	case "INCLUIRLIVRO":
 					require "Controller/ControladorNovoLivro.php";    
 					$controlador = new ControladorNovoLivro();

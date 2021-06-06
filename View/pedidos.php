@@ -1,5 +1,5 @@
 <?php 
-    require "../Model/Pedido.php";
+   // require "../Model/Pedido.php";
     require "../Model/PedidoService.php";
     require "../Model/Usuario.php";
     

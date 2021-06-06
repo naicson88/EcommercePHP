@@ -1,5 +1,5 @@
 <?php
-require "Model/Pedido.php";
+//require "Model/Pedido.php";
 require "Model/PedidoService.php";
 
 class PedidoController {
@@ -29,6 +29,11 @@ class PedidoController {
   public function tramitar($id_pedido, $status){
    $service = new PedidoService();
    $id_pedido = $service->tramitar($id_pedido, $status);
+  }
+
+  public function avaliacaoPedido($id_pedido, $nota, $texto){
+   $service = new PedidoService();
+   $id_pedido = $service->avaliacaoPedido($id_pedido, $nota, $texto);
   }
 
 }
